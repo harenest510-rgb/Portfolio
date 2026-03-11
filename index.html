@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>吴怡林 | UI交互设计作品集</title>
+    <style>
+      :root {
+        --bg-color: #0a0a0a;
+        --card-bg: #1a1a1a;
+        --accent-color: #00ff88; /* 科技绿 */
+        --text-main: #ffffff;
+        --text-sec: #888888;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Inter", "PingFang SC", sans-serif;
+      }
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* 导航栏 */
+      nav {
+        position: fixed;
+        width: 100%;
+        padding: 20px 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(10, 10, 10, 0.8);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+      }
+      .logo {
+        font-size: 24px;
+        font-weight: bold;
+        letter-spacing: 2px;
+      }
+      .nav-links button {
+        background: transparent;
+        border: 1px solid var(--accent-color);
+        color: var(--accent-color);
+        padding: 5px 15px;
+        cursor: pointer;
+        border-radius: 20px;
+        transition: 0.3s;
+      }
+      .nav-links button:hover {
+        background: var(--accent-color);
+        color: #000;
+      }
+
+      /* Hero 区域 */
+      .hero {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 10%;
+        background: radial-gradient(circle at 80% 20%, #1a3a2a 0%, #0a0a0a 50%);
+      }
+      .hero h1 {
+        font-size: 5rem;
+        margin-bottom: 10px;
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeIn 1s forwards;
+      }
+      .hero p {
+        font-size: 1.5rem;
+        color: var(--accent-color);
+        opacity: 0;
+        animation: fadeIn 1s 0.3s forwards;
+      }
+
+      /* 作品网格 */
+      .work {
+        padding: 100px 10%;
+      }
+      .section-title {
+        font-size: 2.5rem;
+        margin-bottom: 50px;
+        border-left: 5px solid var(--accent-color);
+        padding-left: 20px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 30px;
+      }
+      .project-card {
+        background: var(--card-bg);
+        border-radius: 15px;
+        overflow: hidden;
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+        cursor: pointer;
+      }
+      .project-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 255, 136, 0.1);
+      }
+      .img-placeholder {
+        width: 100%;
+        height: 250px;
+        background: #222;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #444;
+      }
+      .project-info {
+        padding: 25px;
+      }
+      .project-info h3 {
+        margin-bottom: 10px;
+      }
+      .tag {
+        font-size: 0.8rem;
+        background: #333;
+        padding: 3px 10px;
+        border-radius: 5px;
+        margin-right: 5px;
+      }
+
+      /* 简历预览区 */
+      .resume-snippet {
+        padding: 100px 10%;
+        background: #0f0f0f;
+      }
+      .info-item {
+        margin-bottom: 20px;
+      }
+      .info-label {
+        color: var(--accent-color);
+        font-weight: bold;
+      }
+
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* 移动端适配 */
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 3rem;
+        }
+        nav {
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="logo">YILIN.WU</div>
+      <div class="nav-links">
+        <button onclick="toggleLang()" id="langBtn">EN</button>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <h1 id="heroName">吴怡林</h1>
+      <p id="heroTitle">高级视觉设计师 / HMI交互专家</p>
+      <p style="font-size: 1.1rem; color: #888; margin-top: 20px" id="heroDesc">
+        深耕设计领域多年，专注于车载UI、智能座舱及企业品牌视觉系统。
+      </p>
+    </section>
+
+    <section class="work">
+      <h2 class="section-title" id="workTitle">精选项目</h2>
+      <div class="grid">
+        <div class="project-card">
+          <div class="img-placeholder">HMI DESIGN PREVIEW</div>
+          <div class="project-info">
+            <span class="tag">车载UI</span><span class="tag">HMI</span>
+            <h3 id="p1Title">祺迹汽车车载系统 UI 迭代</h3>
+            <p id="p1Desc">
+              主导全线无人物流车及智驾小巴的仪表、中控系统视觉设计 [cite: 1]。
+            </p>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="img-placeholder">BRANDING PREVIEW</div>
+          <div class="project-info">
+            <span class="tag">品牌视觉</span><span class="tag">VI</span>
+            <h3 id="p2Title">祺迹汽车 0-1 品牌视觉搭建</h3>
+            <p id="p2Desc">
+              负责企业 VI 系统维护及全球展会物料设计 [cite: 1]。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="resume-snippet">
+      <h2 class="section-title" id="aboutTitle">关于我</h2>
+      <div class="info-item">
+        <span class="info-label">Education:</span> 广东工业大学 -
+        数字媒体艺术（UI方向） [cite: 1]
+      </div>
+      <div class="info-item">
+        <span class="info-label">Experience:</span> 祺迹汽车科技（广州）有限公司
+        - 高级设计师 [cite: 1]
+      </div>
+      <div class="info-item">
+        <span class="info-label">Contact:</span> 13143397064 | 870610751@qq.com
+        [cite: 1]
+      </div>
+    </section>
+
+    <script>
+      let isEn = false;
+      const content = {
+        zh: {
+          name: "吴怡林",
+          title: "高级视觉设计师 / HMI交互专家",
+          desc: "深耕设计领域多年，专注于车载UI、智能座舱及企业品牌视觉系统。",
+          work: "精选项目",
+          about: "关于我",
+          p1T: "祺迹汽车车载系统 UI 迭代",
+          p1D: "主导全线无人物流车及智驾小巴的仪表、中控系统视觉设计。",
+          p2T: "祺迹汽车 0-1 品牌视觉搭建",
+          p2D: "负责企业 VI 系统维护及全球展会物料设计。",
+        },
+        en: {
+          name: "Yilin Wu",
+          title: "Senior Visual Designer / HMI Expert",
+          desc: "Years of experience in UI/UX, focusing on HMI, smart cockpit, and branding.",
+          work: "Featured Works",
+          about: "About Me",
+          p1T: "G-AUTO HMI System Design",
+          p1D: "Led the UI design for unmanned logistics vehicles and smart buses.",
+          p2T: "Corporate VI System 0-1",
+          p2D: "Established and maintained the corporate identity and marketing materials.",
+        },
+      };
+
+      function toggleLang() {
+        isEn = !isEn;
+        const lang = isEn ? "en" : "zh";
+        document.getElementById("langBtn").innerText = isEn ? "CN" : "EN";
+        document.getElementById("heroName").innerText = content[lang].name;
+        document.getElementById("heroTitle").innerText = content[lang].title;
+        document.getElementById("heroDesc").innerText = content[lang].desc;
+        document.getElementById("workTitle").innerText = content[lang].work;
+        document.getElementById("aboutTitle").innerText = content[lang].about;
+        document.getElementById("p1Title").innerText = content[lang].p1T;
+        document.getElementById("p1Desc").innerText = content[lang].p1D;
+        document.getElementById("p2Title").innerText = content[lang].p2T;
+        document.getElementById("p2Desc").innerText = content[lang].p2D;
+      }
+    </script>
+  </body>
+</html>
